@@ -17,7 +17,7 @@ src > app > component > policy > tableau> tableau.component.ts
 
 In Development:
 
-⦁	Alertf forms dealing with ratios
+⦁	Alert forms dealing with ratios
 
 ⦁	Comment Forms.
 
