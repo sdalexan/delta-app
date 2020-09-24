@@ -2,7 +2,7 @@
  
 Switch Tableau Dashboards to go live.
 
-#Protfolio Overview 
+Protfolio Overview 
 src > app > component > portfolio > tableau> tableau.component.html
 src > app > component > portfolio > tableau> tableau.component.ts
 
@@ -10,9 +10,7 @@ Policy List
 src > app > component > policy > tableau> tableau.component.html
 src > app > component > policy > tableau> tableau.component.ts
 
-
-⦁	Remove "<h1>Tableau Dashboard</h1>" from html
-
+⦁	Remove <h1>Tableau Dashboard</h1> from html
 ⦁	Uncomment tableau code in typescript file
 
 Status:
