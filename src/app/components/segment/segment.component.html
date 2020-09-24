@@ -1,0 +1,43 @@
+
+<div class="nav-tabs-navigation">
+    <div class="nav-tabs-wrapper">  
+      
+          
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="nav-item">
+              <a class="nav-link" (click)="onNavigate('csf')" data-toggle="tab">
+                <i class="material-icons"></i>CSF
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+            <li class="nav-item" active>
+              <a class="nav-link" (click)="onNavigate('info')" routerLinkActive="active" data-toggle="tab">
+                <i class="material-icons"></i> Info
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onNavigate('list')" routerLinkActive="active" data-toggle="tab">
+                <i class="material-icons"></i> List
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onNavigate('trending')" routerLinkActive="active" data-toggle="tab">
+                <i class="material-icons"></i> Trending
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+          </ul>
+
+    </div>
+  </div>
+
+<csf-component *ngIf="loadedFeature === 'csf'"></csf-component>
+<segment-info *ngIf="loadedFeature === 'info'"></segment-info>
+<segment-table *ngIf="loadedFeature === 'list'"></segment-table>
+<trending-tableau *ngIf="loadedFeature === 'trending'"></trending-tableau>
+
+
+
+

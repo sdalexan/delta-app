@@ -1,0 +1,24 @@
+<div class="nav-tabs-navigation">
+    <div class="nav-tabs-wrapper">  
+      
+          
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="nav-item">
+              <a class="nav-link" (click)="onNavigate('overview')" data-toggle="tab">
+                <i class="material-icons"></i>Overview
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+            <li class="nav-item" active>
+              <a class="nav-link" (click)="onNavigate('alert')" routerLinkActive="active" data-toggle="tab">
+                <i class="material-icons"></i> Alerts
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+          </ul>
+
+    </div>
+  </div>
+
+<alert-table *ngIf="loadedFeature === 'alert'"></alert-table>
+<portfolio-tableau *ngIf="loadedFeature === 'overview'"></portfolio-tableau>

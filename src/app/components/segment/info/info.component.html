@@ -1,0 +1,321 @@
+
+
+    
+    <div class="content">
+    
+    <div class="container-fluid">
+        
+      <ul class="nav nav-pills justify-content-center" data-tabs="tabs">
+        <li class="nav-item">
+            <div class="dropdown">
+              <button (click)="retrieveCategory('segment')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Segment
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <ng-container *ngFor="let segment of rows">
+                  <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+                </ng-container> 
+              </div>
+            </div>
+        </li>
+        <li class="nav-item">
+          <div >
+          <div class="dropdown">
+            <button (click)="retrieveCategory('agent')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Agent
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+              <ng-container *ngFor="let segment of rows">
+                <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+              </ng-container> 
+            </div>
+          </div>
+        </div>
+        </li>
+        <li class="nav-item" >
+          <div class="dropdown" >
+            <button (click)="retrieveCategory('state')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              State
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ng-container *ngFor="let segment of rows">
+                <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+              </ng-container> 
+            </div>
+          </div>
+        </li>
+        <li class="nav-item" >
+          <div class="dropdown" >
+            <button (click)="retrieveCategory('program')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Program
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ng-container *ngFor="let segment of rows">
+                <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+              </ng-container> 
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    
+    <div class="row">
+    
+    <div class="col-md-3">
+        
+    <div class="row">
+      <div class="card">
+        <div class="card-header card-header-tabs card-header-primary">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+                  
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="nav-item">
+              <span class="nav-tabs-title">Description</span>
+              </li>
+
+            </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="segmentInfo">
+  
+          <h3>{{ segmentInfo.description }}</h3>
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+        
+      <div class="card">
+  
+        <div class="card-header card-header-tabs card-header-primary">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <span class="nav-tabs-title">Recent Alerts</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-body">
+  
+            <table class="table">
+              <thead class=" text-primary">
+                <th>Alert Triggered</th>
+                <th>Condition</th>
+                <th>Amount</th>
+              </thead>
+              <tbody>
+  
+              <ng-container *ngFor="let alert of alertInfo">
+                <tr>
+                  <td>{{ alert.alert_date | date }}</td>
+                  <td>{{ alert.name }} {{ alert.condition }}</td>
+                  <td>{{ alert.amount }}</td>
+                </tr>
+              </ng-container>
+              
+              </tbody>
+            </table>
+  
+        </div>
+  
+      </div>
+  
+    </div>
+    
+    </div>
+    
+    <div class="col-md-9">
+  
+  
+      <div class="card">
+  
+        <div class="card-header card-header-tabs card-header-primary">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <span class="nav-tabs-title">Alert History:</span>
+  
+              <ul class="nav nav-pills-content" data-tabs="tabs">
+                <li class="nav-item" >
+                  <a class="nav-link" routerLink="/info-segment" routerLinkActive="active" data-toggle="tab">
+                   <i class="material-icons"></i>All
+                   <div class="ripple-container"></div>
+                 </a>
+               </li>
+                <li class="nav-item" >
+                   <a class="nav-link">
+                    <i class="material-icons"></i>Active
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item" >
+                  <a class="nav-link">
+                    <i class="material-icons"></i>Pending Recommendation
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    <i class="material-icons"></i>Pending Action
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    <i class="material-icons"></i>Complete
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+        
+    
+            </div>
+          </div>
+        </div>
+  
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>Alert Set</th>
+                <th>Alert Triggered</th>
+                <th>Condition</th>
+                <th>Amount</th>
+                <th>Reviewer</th>
+                <th>Recommendation</th>
+                <th>Others Involved</th>
+                <th>Actions Taken</th>
+                <th>Date Complete</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let alert of alertInfo">
+                <tr>
+                  <td>{{ alert.created_date | date }}</td>
+                  <td>{{ alert.alert_date | date }}</td>                
+                  <td>{{ alert.name }} {{ alert.condition }}</td>                
+                  <td>{{ alert.amount }}</td>
+                  <td>{{ alert.reviewer }}</td>
+                  <td>{{ alert.recommendation }}</td>
+                  <td>{{ alert.involved }}</td>
+                  <td>{{ alert.action_taken }}</td>
+                  <td>{{ alert.completed_date | date }}</td>
+                                <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                    <i class="material-icons">edit</i>
+                </button></td>
+                </tr>
+                </ng-container>
+  
+  
+      
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div class="card-footer">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                    <i class="material-icons">arrow_left</i>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="javascript:void(0)">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">
+                    <i class="material-icons">arrow_right</i>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+        </div>
+  
+      </div>
+  
+  
+  
+    </div>
+    
+    </div>
+    
+    <div class="row">
+    
+    <div class="col-md-3">
+
+        <div class="card">
+            <div class="card-header card-header-tabs card-header-primary">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <span class="nav-tabs-title">Documents</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <p>Add Drag and Drop here</p>
+            </div>
+          </div>
+
+    </div>
+    
+    <div class="col-md-9">
+        
+      <div class="card">
+        <div class="card-header card-header-tabs card-header-primary">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <span class="nav-tabs-title">Comments:</span>
+    
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>Subject</th>
+                <th>Topic</th>
+                <th>Content</th>
+                <th>Created Date</th>
+                <th>Created By</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let comment of comments">
+                  <tr>
+                    <td>{{ comment.subject }}</td>
+                    <td>{{ comment.topic }}</td>
+                    <td>{{ comment.content }}</td>                
+                    <td>{{ comment.created_date | date }}</td>                
+                    <td>{{ comment.created_by | date }}</td>
+                    <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">edit</i>
+                  </button></td>
+                  </tr>
+                  </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    </div>
+
+    
+    

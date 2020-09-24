@@ -1,0 +1,24 @@
+<div class="nav-tabs-navigation">
+    <div class="nav-tabs-wrapper">  
+      
+          
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="nav-item">
+              <a class="nav-link" (click)="onNavigate('policy')" data-toggle="tab">
+                <i class="material-icons"></i>Policy
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+            <li class="nav-item" active>
+              <a class="nav-link" (click)="onNavigate('comment')" routerLinkActive="active" data-toggle="tab">
+                <i class="material-icons"></i> Comments
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+          </ul>
+
+    </div>
+  </div>
+
+<comments-policy *ngIf="loadedPolicyFeature === 'comment'"></comments-policy>
+<policy-tableau *ngIf="loadedPolicyFeature === 'policy'"></policy-tableau>

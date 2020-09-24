@@ -1,0 +1,101 @@
+
+    <header  *ngIf="data" id="modal-header justify-content-center">
+        <h3>{{ data.name }}</h3>
+        <h3>Current:</h3>
+        <h4>{{ type.value }} {{ current | currency}}</h4>
+    </header>
+
+    
+    <form>
+
+        <ul class="nav nav-pills justify-content-center" data-tabs="tabs">
+            <li class="nav-item">
+                <div class="dropdown">
+                  <button (click)="retrieveCategory('segment')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Segment
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ng-container *ngFor="let segment of rows">
+                      <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+                    </ng-container> 
+                  </div>
+                </div>
+            </li>
+            <li class="nav-item">
+              <div >
+              <div class="dropdown">
+                <button (click)="retrieveCategory('agent')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Agent
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                  <ng-container *ngFor="let segment of rows">
+                    <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+                  </ng-container> 
+                </div>
+              </div>
+            </div>
+            </li>
+            <li class="nav-item" >
+              <div class="dropdown" >
+                <button (click)="retrieveCategory('state')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  State
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <ng-container *ngFor="let segment of rows">
+                    <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+                  </ng-container> 
+                </div>
+              </div>
+            </li>
+            <li class="nav-item" >
+              <div class="dropdown" >
+                <button (click)="retrieveCategory('program')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Program
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <ng-container *ngFor="let segment of rows">
+                    <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+                  </ng-container> 
+                </div>
+              </div>
+            </li>
+          </ul>
+        <div class="form-group">
+          <select class="form-control" (click)="typeChange($event.target.value)" #type>
+            <option value="Premium Total" >Premium Total</option>
+            <option value="Premium Percent">Premium Percent</option>
+            <option value="Direct Written Premium">Direct Written Premium</option>
+            <option value="Premium Growth">Premium Growth</option>
+            <option value="Policy Count">Policy Count</option>
+            <option value="DWP Per Policy">DWP Per Policy</option>
+            <option value="Loss Ratio">Loss Ratio</option>
+            <option value="Loss Ratio CAT">Loss Ratio CAT</option>
+            <option value="Loss Ratio Large Loss">Loss Ratio Large Loss</option>
+            <option value="Claim Count">Claim Count</option>
+            <option value="Average Loss Size">Average Loss Size</option>
+            <option value="Commodity Total">Commodity Total</option>
+            <option value="Commodity Percent">Commodity Percent</option>
+            <option value="Submission Total">Submission Total</option>
+            <option value="Submission Percent">Submission Percent</option>
+          </select>
+        </div>
+     
+        <div class="form-group">
+            <input type="range"  class="form-control-range" min="0" max="{{max}}" value={{amount}} id="amount" (click)="amountChange($event.target.value)" #amountInput >
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <!-- <h3 *ngIf="amountType === 'total'">{{ type.value }} {{ data.name }} is currenlty {{ amount.value | currency }}</h3>
+        <h3 *ngIf="amountType === 'ratio'">{{ type.value }} {{ data.name }} is currenlty {{ amount.value | percent }}</h3> -->
+        <div *ngIf="current !== amount">
+            <div *ngIf="data">
+                <div *ngIf="condition === 'over'"><h3>Alert will trigger when {{ type.value }} for {{ data.name }} has exceeded {{ amountInput.value | currency }}</h3></div>
+                <div *ngIf="condition === 'under'"><h3>Alert will trigger when {{ type.value }} for {{ data.name }} goes below {{ amountInput.value | currency }}</h3></div>
+                <button class="btn btn-primary" id="modal-action-button" (click)="createAlert()">Create Alert</button>
+            </div>
+        </div>
+    </form>
+

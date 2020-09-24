@@ -1,0 +1,200 @@
+    
+<div class="content">
+
+  <div class="container-fluid">
+
+
+<ul class="nav nav-pills justify-content-center" data-tabs="tabs">
+  <li class="nav-item">
+      <div class="dropdown">
+        <button (click)="retrieveCategory('segment')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Segment
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <ng-container *ngFor="let segment of rows">
+            <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+          </ng-container> 
+        </div>
+      </div>
+  </li>
+  <li class="nav-item">
+    <div >
+    <div class="dropdown">
+      <button (click)="retrieveCategory('agent')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Agent
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+        <ng-container *ngFor="let segment of rows">
+          <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+        </ng-container> 
+      </div>
+    </div>
+  </div>
+  </li>
+  <li class="nav-item" >
+    <div class="dropdown" >
+      <button (click)="retrieveCategory('state')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        State
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <ng-container *ngFor="let segment of rows">
+          <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+        </ng-container> 
+      </div>
+    </div>
+  </li>
+  <li class="nav-item" >
+    <div class="dropdown" >
+      <button (click)="retrieveCategory('program')" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Program
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <ng-container *ngFor="let segment of rows">
+          <a class="dropdown-item" (click)="onChange(segment.id)">{{ segment.name }}</a>
+        </ng-container> 
+      </div>
+    </div>
+  </li>
+</ul>
+
+<div class="card">
+
+  <div class="card-header card-header-tabs card-header-primary">
+    <div class="nav-tabs-navigation">
+      <div class="nav-tabs-wrapper">
+        <ul class="nav nav-tabs justify-content-center" data-tabs="tabs">
+            <li class="nav-item">
+             <ng-container *ngIf="info"><h3>{{ info.name }}</h3></ng-container>
+          </li>
+          </ul>
+      </div>
+    </div>          
+  </div>
+    
+  <div class="card-body">
+
+      <div class="table-responsive">
+
+        <table class="table">
+
+          <thead class=" text-primary">
+            <th><h3>Financial Growth Rate</h3></th>
+            <th><h3>Actual</h3></th>
+            <th><h3>Target</h3></th>
+            <th></th>
+          </thead>
+
+          <tbody>
+
+          <ng-container *ngIf="info">
+
+            <tr>
+              <td>Premium Growth Rate</td>
+              <td>{{ info.premium_growth_actual }}</td>
+              <td>{{ info.premium_growth_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+              </button></td>
+            </tr>
+            <tr>
+              <td>In-force Policy Count</td>
+              <td>{{ info.policy_count_actual }}</td>
+              <td>{{ info.policy_count_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+              </button></td>
+            </tr>
+            <tr>
+              <td>DWP Per In-force Policy</td>
+              <td>{{ info.dwp_per_policy_actual }}</td>
+              <td>{{ info.dwp_per_policy_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td><h3>Profitability</h3></td>
+              <td><h3>Actual</h3></td>
+              <td><h3>Target</h3></td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td>Total Loss Ratio (Non-Cat)</td>
+              <td>{{ info.loss_ratio_actual }}</td>
+              <td>{{ info.loss_ratio_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td>Number of Claims</td>
+              <td>{{ info.claim_count_actual }}</td>
+              <td>{{ info.claim_count_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td>Average Size of Losses</td>
+              <td>{{ info.loss_size_avg_actual }}</td>
+              <td>{{ info.loss_size_avg_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td>Large Loss Ratio (Cat)</td>
+              <td>{{ info.loss_ratio_cat_actual }}</td>
+              <td>{{ info.loss_ratio_cat_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td>Large Loss Ratio (Non-Cat)</td>
+              <td>{{ info.loss_ratio_large_actual }}</td>
+              <td>{{ info.loss_ratio_large_target }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td><h3>Percent of Business</h3></td>
+              <td><h3>Authority</h3></td>
+              <td><h3>Commodity</h3></td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td>Policy Count</td>
+              <td>{{ info.commodity_count_total }}</td>
+              <td>{{ info.commodity_dwp_percent }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+            <tr>
+              <td>DWP</td>
+              <td>{{ info.submission_count_total }}</td>
+              <td>{{ info.submission_dwp_percent }}</td>
+              <td><button mat-raised-button type="button" matTooltip="Edit Task" class="btn btn-primary btn-link btn-sm btn-just-icon">
+              <i class="material-icons">edit</i>
+            </button></td>
+            </tr>
+          </ng-container>
+          
+          </tbody>
+          
+        </table>
+
+      </div>
+
+  </div>
+
+</div>
+</div>
+
+</div>
