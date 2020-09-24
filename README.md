@@ -1,10 +1,12 @@
 # delta
  
-##Switch Tableau Dashboards to go live.
-###Protfolio Overview 
+Switch Tableau Dashboards to go live.
+
+#Protfolio Overview 
 src > app > component > portfolio > tableau> tableau.component.html
 src > app > component > portfolio > tableau> tableau.component.ts
-###Policy List
+
+Policy List
 src > app > component > policy > tableau> tableau.component.html
 src > app > component > policy > tableau> tableau.component.ts
 
