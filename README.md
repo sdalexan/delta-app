@@ -10,7 +10,7 @@ Policy List
 src > app > component > policy > tableau> tableau.component.html
 src > app > component > policy > tableau> tableau.component.ts
 
-⦁	Remove <h1>Tableau Dashboard</h1> from html
+⦁	Remove Tableau Dashboard header from html
 ⦁	Uncomment tableau code in typescript file
 
 Status:
